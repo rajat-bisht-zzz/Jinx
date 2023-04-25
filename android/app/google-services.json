@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "173434002176",
+    "firebase_url": "https://confididential-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "confididential",
+    "storage_bucket": "confididential.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173434002176:android:74139d5af3f792f43f71e5",
+        "android_client_info": {
+          "package_name": "com.example.jinx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173434002176-ub488mgcriv50g47ijtpdo058prm96ha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3HVmLiH7ZGpgmrLQlhlD0CZtpMVguANw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173434002176-ub488mgcriv50g47ijtpdo058prm96ha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

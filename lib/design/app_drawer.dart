@@ -10,28 +10,32 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
+      child: ListView(
         children: [
-          AppBar(
-            title: const Text('Konnichiwa'),
-            automaticallyImplyLeading: false,
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(
-              Icons.shop,
-              color: Colors.blue,
+          DrawerHeader(
+            padding: EdgeInsets.zero,
+            child: Column(
+              children: const [
+                CircleAvatar(
+                  backgroundImage:
+                      NetworkImage("https://picsum.photos/200/300"),
+                  radius: 24,
+                ),
+                const Divider(),
+                Text(
+                  'Rajat',
+                  style: TextStyle(fontFamily: 'monospace', fontSize: 16),
+                ),
+                const Divider(),
+                Text(
+                  'Rajat',
+                  style: TextStyle(fontFamily: 'monospace', fontSize: 16),
+                ),
+              ],
             ),
-            title: const Text(
-              'Shop',
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
-            ),
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed('/');
-            },
           ),
-          const Divider(),
           ListTile(
+            contentPadding: EdgeInsets.zero,
             leading: const Icon(Icons.logout, color: Colors.brown),
             title: const Text(
               'Logout',

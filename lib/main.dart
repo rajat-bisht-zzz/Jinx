@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           },
           home: auth.isAuth
               ? auth.isAdmin
-                  ? const AdminScreen()
+                  ? AdminScreen(userId: auth.userId.toString())
                   : const UserProfileScreen()
               : FutureBuilder(
                   future: auth.tryAutoLogin(),

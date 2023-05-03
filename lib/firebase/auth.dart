@@ -19,7 +19,6 @@ class Auth with ChangeNotifier {
   }
 
   bool get isAdmin {
-    print("isadmin: ${(_userRole == "Host")}");
     return (_userRole == "Host");
   }
 
@@ -83,6 +82,7 @@ class Auth with ChangeNotifier {
           'token': _token,
           'userId': _userId,
           'expiryDate': _expiryDate!.toIso8601String(),
+          'role' : _userRole
         },
       );
       pref.setString('userData', userData);
@@ -93,13 +93,11 @@ class Auth with ChangeNotifier {
 
   Future<void> signUp(
       String name, String email, String password, String role) async {
-    print('TEST!!!!! signUp called = $role');
     return _authenticate(
         name, email, password, AuthMode.Signup, 'signUp', role);
   }
 
   Future<void> logIn(String email, String password) async {
-    print('TEST!!!!! login called');
     return _authenticate(
         '', email, password, AuthMode.Login, 'signInWithPassword', '');
   }
@@ -118,6 +116,7 @@ class Auth with ChangeNotifier {
     _token = extractedUserData['token'];
     _userId = extractedUserData['userId'];
     _expiryDate = expiryDate;
+    _userRole = extractedUserData['role'];
     notifyListeners();
     _autoLogout();
     return true;
@@ -127,6 +126,7 @@ class Auth with ChangeNotifier {
     _token = null;
     _userId = null;
     _expiryDate = null;
+    _userRole = null;
     if (_authTimer != null) {
       _authTimer!.cancel();
       _authTimer = null;

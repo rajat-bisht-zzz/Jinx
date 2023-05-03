@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import '../design/app_drawer.dart';
 
@@ -14,7 +13,7 @@ class UserProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('User Profile'),
       ),
-      drawer: const AppDrawer(),
+      drawer: AppDrawer(name: '', role: ''),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

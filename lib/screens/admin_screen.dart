@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../design/app_drawer.dart';
 
 class AdminScreen extends StatefulWidget {
-  final String userId;
+  final String? userId;
 
   const AdminScreen({Key? key, required this.userId}) : super(key: key);
 
@@ -13,6 +13,27 @@ class AdminScreen extends StatefulWidget {
 }
 
 class _AdminScreenState extends State<AdminScreen> {
+  String _currentUserName = 'Unknown';
+  String _currentUserRole = 'Unknown';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  void _loadUserData() async {
+    final userDoc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(widget.userId)
+        .get();
+
+    setState(() {
+      _currentUserName = userDoc.get('name') ?? 'Unknown';
+      _currentUserRole = userDoc.get('role') ?? 'Unknown';
+    });
+  }
+
   Stream<List<DocumentSnapshot<Map<String, dynamic>>>> getUsersStream() {
     final userRef = FirebaseFirestore.instance.collection('users');
     final usersStream = userRef.snapshots();
@@ -27,7 +48,7 @@ class _AdminScreenState extends State<AdminScreen> {
         backgroundColor: Colors.blue,
         elevation: 0,
       ),
-      drawer: const AppDrawer(),
+      drawer: AppDrawer(name: _currentUserName, role: _currentUserRole),
       body: StreamBuilder(
           stream: getUsersStream(),
           builder: (context, snapshot) {

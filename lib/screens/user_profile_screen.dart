@@ -13,7 +13,7 @@ class UserProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('User Profile'),
       ),
-      drawer: AppDrawer(name: '', role: ''),
+      drawer: const AppDrawer(name: '', role: ''),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
